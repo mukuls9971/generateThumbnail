@@ -50,7 +50,9 @@ Response 200 + outputFileName
 
 - Architecture
 1. components and the connections
-    Only a single view which downloads the remoteUrl and converts to thumbnail
+    - Only a single view which downloads the remoteUrl and converts to thumbnail
+    - Redis queue is used where for async operation the filename is returned and operation is executed in backend
+    - both sync and async APIs are implemented to show the use case
 2. libraries/dependencies/tools
     - django: more stable and scalable with multiple workers and lot of ready-to-use features like template, admin etc
     - PIL: standard library in python for image manipulation
