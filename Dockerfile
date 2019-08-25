@@ -1,6 +1,5 @@
-FROM python:3.7-alpine
+FROM python:latest
 WORKDIR /code
-COPY requirements.txt requirements.txt
-RUN pip install -r requirements.txt
 COPY . .
-CMD ["python", "manage.py", "runserver"]
+RUN apt-get install libjpeg-dev zlib1g-dev && pip install -r requirements.txt
+# ENTRYPOINT ["python3", "genThumbnail/manage.py", "runserver"]

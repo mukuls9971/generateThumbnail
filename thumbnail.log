@@ -1,0 +1,20 @@
+Watching for file changes with StatReloader
+[views.py:13 -         homePageView() ] Processing is being done for heartbeat message
+[25/Aug/2019 07:24:26] "GET / HTTP/1.1" 200 13
+[views.py:13 -         homePageView() ] Processing is being done for heartbeat message
+[25/Aug/2019 07:24:26] "GET / HTTP/1.1" 200 13
+Performing system checks...
+
+System check identified no issues (0 silenced).
+August 25, 2019 - 07:24:21
+Django version 2.2.4, using settings 'genThumbnail.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+Watching for file changes with StatReloader
+Performing system checks...
+
+System check identified no issues (0 silenced).
+August 25, 2019 - 07:25:00
+Django version 2.2.4, using settings 'genThumbnail.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.

@@ -19,35 +19,45 @@ discuss them in your README.
 
 # Documentation 
 
--Python based Architeture
+- Python based Architeture
 
--How To Run
+- How To Run
 docker-compose up
 
--How to test
-./manage.py test
+- How to test
+1. ./manage.py test
 since it is a Rest API without any business logic, only one unit test is there
-Go to this url: http://127.0.0.1:8000/generateThumbnail?url=https://images.pexels.com/photos/2331584/pexels-photo-2331584.jpeg 
+
+2. Go to url http://127.0.0.1:8000/ 
+Expected: "hello world" message
+
+3. Go to this url: http://127.0.0.1:8000/generateThumbnail?url=https://images.pexels.com/photos/2331584/pexels-photo-2331584.jpeg 
 expected: should show thumbnail
 If image not available should show a black thumbnail of same size i.e. 100*100
 
--API
+- API
 This operation generates a thumbnail image
 Http Method: GET
 Request URL: http://127.0.0.1:8000/generateThumbnail?url=https://images.pexels.com/photos/2331584/pexels-photo-2331584.jpeg
 Input Requirements: 1.Supported image formats: JPEG, PNG, GIF, BMP. 2. size > 100*100
 Response 200 + [Binary image data]
 
--Architecture
+- Architecture
 1. components and the connections
     Only a single view which downloads the remoteUrl and converts to thumbnail
 2. libraries/dependencies/tools
-    django: more stable and scalable with multiple workers and lot of ready-to-use features like template, admin etc
-    PIL: standard library in python for image manipulation
-    requests: standard library to download data from url
+    - django: more stable and scalable with multiple workers and lot of ready-to-use features like template, admin etc
+    - PIL: standard library in python for image manipulation
+    - requests: standard library to download data from url
+    - redis: to handle load asynchronously
 
     Most packages and libraries we dont require for current implementation but if we want to scale then we would require that 
 
-- improvements for production
-- scaling
+- improvements for production and scalability 
+1. For production usage we need to remove debug configuration: so set DEBUG = False in settings.py 
+2. Increase workers while django startup 
+3. To handle extra load start a redis queue from where request should be read and executed asynchronously, while the output filename should be returned to the client synchronously
+4. Instead of saving asynchronous images on local static server Save to AWS S3 (http://127.0.0.1:8000/media/abc.png)
+
 - monitoring
+1. For Monitoring a GCP stackdriver agent should be installed and logs should be exported to stackdriver
