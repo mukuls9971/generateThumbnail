@@ -1,3 +1,8 @@
+Author: Mukul Singla 
+Contact no 9971087102
+Email: mukul9971@gmail.com and mukulsngl@gmail.com
+
+
 # generateThumbnail
 JSON-based REST API service which resizes images into 100x100px thumbnails.
 
@@ -55,6 +60,8 @@ Response 200 + outputFileName
     - Only a single view which downloads the remoteUrl and converts to thumbnail
     - Redis queue is used where for async operation the filename is returned and operation is executed in backend
     - both sync and async APIs are implemented to show the use case
+    - no DB is used but statically stored imaged 
+    
 2. libraries/dependencies/tools
     - django: more stable and scalable with multiple workers and lot of ready-to-use features like template, admin etc
     - PIL: standard library in python for image manipulation
@@ -65,9 +72,13 @@ Response 200 + outputFileName
 
 - improvements for production and scalability 
 1. For production usage we need to remove debug configuration: so set DEBUG = False in settings.py 
-2. Increase workers while django startup 
+2. Use kubernetes system with docker image + Load Balancer + Increase workers while django startup 
 3. To handle extra load start a redis queue from where request should be read and executed asynchronously, while the output filename should be returned to the client synchronously
 4. Instead of saving asynchronous images on local static server Save to AWS S3 (http://127.0.0.1:8000/media/abc.png)
 
-- monitoring
+- monitoring and managing
 1. For Monitoring a GCP stackdriver agent should be installed and logs should be exported to stackdriver
+2. Or, through ELK we can have a tab on logs and can set up alerts, load factor can be tracked simultaneously
+3. We can set up a kubernetes cluster with no. of systems dependent on load factor if we want to do scale it (for both scaling up and scaling down)
+4. Further a better image processing using support hardware can help the overall system.
+
