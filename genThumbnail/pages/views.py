@@ -78,9 +78,9 @@ def generateThumbnailView(request):
 def generateThumbnailAsync(request):
     try:
         url = request.GET['url']
-        filename = str(random.randint(1, 100000))+".jpeg"
+        filename = str(random.randint(1, 10000000))+".jpeg"
         queue.rpush(queueKey, url +"|"+filename)
-        msg = 'Please check filename:127.0.0.1:8080/media/' + filename + ' after 10 min or use our sync algorithm ' 
+        msg = 'Please check filename:127.0.0.1:8000/media/' + filename + ' after 10 min or use our sync algorithm ' 
         logger.info(msg)
         return HttpResponse(msg)
     except Exception as e:

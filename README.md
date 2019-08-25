@@ -22,7 +22,9 @@ discuss them in your README.
 - Python based Architeture
 
 - How To Run
-docker-compose up
+1. git clone https://github.com/mukuls9971/generateThumbnail and cd into the directory 
+2. docker-compose up
+Currently for asynchronous execution 3 sec interval is kept so that logs can be reviewed easily
 
 - How to test
 1. ./manage.py test
