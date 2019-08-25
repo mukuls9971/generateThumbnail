@@ -42,6 +42,12 @@ Request URL: http://127.0.0.1:8000/generateThumbnail?url=https://images.pexels.c
 Input Requirements: 1.Supported image formats: JPEG, PNG, GIF, BMP. 2. size > 100*100
 Response 200 + [Binary image data]
 
+
+Http Method: GET
+Request URL: http://127.0.0.1:8000/generateThumbnailAsync?url=https://images.pexels.com/photos/2331584/pexels-photo-2331584.jpeg
+Input Requirements: 1.Supported image formats: JPEG, PNG, GIF, BMP. 2. size > 100*100
+Response 200 + outputFileName
+
 - Architecture
 1. components and the connections
     Only a single view which downloads the remoteUrl and converts to thumbnail
